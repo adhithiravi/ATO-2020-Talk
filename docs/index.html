@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Best Practices to Build Scalable React Native Apps - ATO 2020</title>
+
+		<meta name="description" content="Adhithi Ravichandran ATO talk">
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-montserrat theme-color-white-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section class="stack" data-id="2fada975de27b6c7d8b808c17058d46c"><section data-id="bc437c044ed3fab08468b5d8d334015b" data-background-color="#222222"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 178.084px; height: auto;" data-block-id="5d5f7be48faec8f768afe10e61e5e4ae"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 255, 255);">
+<h1>Best Practices to Build Scalable React Native Apps</h1>
+</div></div></section><section data-id="5b89ffddd0415f0efb60b4584c0114d5"><div class="sl-block" data-block-type="text" style="height: auto; width: 719px; left: 131px; top: 287px;" data-block-id="5b06bd263a45dec6ee18e6d6013e44f8"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: center; color: rgb(0, 0, 0);">
+<h2>Adhithi Ravichandran</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 97px; height: 97px; left: 259.384px; top: 361px; min-width: 1px; min-height: 1px;" data-block-id="202bd46bd130f03f2a598b16182a752b"><a class="sl-block-content" style="z-index: 11;" href="https://twitter.com/AdhithiRavi" target="_blank"><img style="" data-natural-width="1280" data-natural-height="1280" data-lazy-loaded="" data-src="react-native-talk/ed2f8716dbdf5955215a2c1f7ffafe1b.png"></a></div>
+<div class="sl-block" data-block-type="image" style="width: 79px; height: 79px; left: 491px; top: 370px; min-width: 1px; min-height: 1px;" data-block-id="ef9e9aa2469302e036b57748357873bc"><a class="sl-block-content" style="z-index: 12;" href="https://github.com/adhithiravi" target="_blank"><img data-natural-width="1280" data-natural-height="1280" style="" data-lazy-loaded="" data-src="react-native-talk/4a52bc7ba0cb349e47ec409288a8f80e.png"></a></div>
+<div class="sl-block" data-block-type="image" style="width: 70px; height: 70px; left: 615px; top: 370px; min-width: 1px; min-height: 1px;" data-block-id="686bffe4e9d6e6eaa39b73bcd29b508b"><a class="sl-block-content" style="z-index: 13;" href="https://www.linkedin.com/in/adhithi/" target="_blank"><img data-natural-width="180" data-natural-height="180" style="" data-lazy-loaded="" data-src="react-native-talk/d7e0daf68310ff901e1d46338ec73d0a.png"></a></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 471px;" data-block-id="44d4ae76a0a20e4df68f4a7596a54aa4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" dir="ui"><p><a href="http://adhithiravichandran.com/" target="_blank"><span>http://adhithiravichandran.com/</span></a></p></div></div>
+<div class="sl-block" data-block-type="image" style="width: 75px; height: 75px; left: 376.115px; top: 370px; min-width: 1px; min-height: 1px;" data-block-id="376f37ece0c4d3ca3b9d0320c4dcfaee"><a class="sl-block-content" style="z-index: 15;" href="https://medium.com/@adhithiravi" target="_blank"><img style="" data-natural-width="195" data-natural-height="195" data-lazy-loaded="" data-src="react-native-talk/cb272a02f021906dabf97685844104d7.png"></a></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 51px;" data-block-id="518a88e7ace271c889d31b4f58693032"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" dir="ui">
+<h1>Who Am I?</h1>
+</div></div></section><section data-background-color="#222222" data-id="39457eac62f1aab1a2c4de12cb90b576">
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 891px; left: 35px; top: 280px;" data-block-id="97e313d734f8dc0e55e1f0d926604fbb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<h2>Building native cross-platform apps using JavaScript and React </h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 312px; height: 221px; left: 314px; top: 30px; min-width: 1px; min-height: 1px;" data-block-id="37f005547b5c8d9fbdda2a8a9a7021d8"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1024" data-natural-height="724" style="" data-lazy-loaded="" data-src="react-native-talk/f3d91fd660edf0cd588fa620cf1b1448.png"></div></div></section><section data-id="a73a4d63971e94fef376e6df14080c47" data-background-color="#7faef7" data-auto-animate=""><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 32.7091px; height: auto;" data-block-id="30a94bf05d003a6f586e582497f56680" data-name="text-b07015"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>iOS vs. Android</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-03f2e3" data-block-id="21b07781081f0fbd6aab28cc2ecfdd87" style="width: 847.876px; height: 495.159px; left: 56.062px; top: 152.05px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="500" data-natural-height="292" style="" data-lazy-loaded="" data-src="react-native-talk/bf1454bfb195b2dbdc11a79ef2ee8b81.gif"></div></div></section><section data-id="834114973dc565966cdb2b938274ddd5" data-background-color="#222222"><div class="sl-block" data-block-type="text" data-name="text-a10c30" data-block-id="aefafb88da82ed7f9e4e9e2f16883ffc" style="height: auto; width: 829.466px; left: 80px; top: 70px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<h2>About 85-90% code is shared</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-fab4be" data-block-id="40bfa5503cfb7201cb96f74ce1155b8e" style="width: 408.092px; height: 288.534px; left: 265.755px; top: 271.466px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1024" data-natural-height="724" style="" data-lazy-loaded="" data-src="react-native-talk/f3d91fd660edf0cd588fa620cf1b1448.png"></div></div></section><section data-id="83117525d09e4c80117788181762a15d"><div class="sl-block" data-block-type="text" style="width: 806px; left: 74px; top: 49.2817px; height: auto;" data-block-id="67732d84529589335241ba50d46cd4b8"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui"><h1>Tools</h1></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-fb7364" data-block-id="1bc6dc6d97117974c21c99888d85d8d3" style="width: 289.808px; height: 289.808px; left: 590.192px; top: 205.096px; min-width: 1px; min-height: 1px;"><div class="sl-block-content fragment" style="z-index: 11;" data-fragment-index="1"><img data-natural-width="1024" data-natural-height="1024" style="" data-lazy-loaded="" data-src="react-native-talk/aebada7066ed09098420a1ca53a19db2.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-afa4f3" data-block-id="64bca440dd8da63dc4ef04eaf0b6ff56" style="width: 307.22px; height: 307.22px; left: 80px; top: 188.684px; min-width: 1px; min-height: 1px;"><div class="sl-block-style" style="z-index: 12; transform: rotate(0deg);"><div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="0"><img style="" data-natural-width="512" data-natural-height="512" data-lazy-loaded="" data-src="react-native-talk/da5d052d37f3376c36336148edcd9723.jpg"></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-197007" data-block-id="2203db21fd7602058b087f141df2bd64" style="height: auto; width: 600px; left: -60px; top: 517.22px;"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="0">
+<h3>XCode</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 450.271px; top: 517.22px;" data-block-id="382875add487ec7f2f304d327cdae601" data-name="text-066d68"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="1">
+<h3>Android Studio</h3>
+</div></div></section><section data-id="589d5e98af7bc8b3bb62fafdffdcde12"><div class="sl-block" data-block-type="text" style="width: 806px; left: 74px; top: 49.2817px; height: auto;" data-block-id="e45d6b3c6b4a3ecac7504a09f8468c3f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h1>Native Components</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-afa4f3" style="width: 400px; height: 268.182px; left: 25.9771px; top: 238.196px; min-width: 1px; min-height: 1px;" data-block-id="4fa277eea58344ad157e11382b313725"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content fragment" style="z-index: 11;" data-fragment-index="0"><img style="" data-natural-width="528" data-natural-height="354" data-lazy-loaded="" data-src="react-native-talk/c2264da928677e6f254901fc71b93f6d.png"></div></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-197007" style="height: auto; width: 600px; left: -105.893px; top: 650px;" data-block-id="e62e4a74948600f610e0a88b00f183ef"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0">
+<h3>iOS</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 400px; top: 650px;" data-name="text-066d68" data-block-id="d9aff4aa904a7d5cb151ddeba6903481"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="1">
+<h3>Android</h3>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-544413" data-block-id="6fb877bf66eee25b5ada21157df56e3e" style="width: 271.424px; height: 473.635px; left: 564.288px; top: 156.365px; min-width: 1px; min-height: 1px;"><div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="1"><img data-natural-width="400" data-natural-height="698" style="" data-lazy-loaded="" data-src="react-native-talk/2c933774e6705ffdf140f8a2adf0355b.png"></div></div></section><section data-id="ff932b76eee3a864b278397df83baf58"><div class="sl-block" data-block-type="text" style="width: 806px; left: 74px; top: 49.2817px; height: auto;" data-block-id="e39bcdc0acac9a38a2bda9e128a46665"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h1>Release Process</h1>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-197007" style="height: auto; width: 550.877px; left: -63.7135px; top: 477.719px;" data-block-id="9996a3fbe88af3e9d6d1e114d3d4b92e"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(102, 102, 102);" data-fragment-index="0">
+<p><strong><span style="font-size:1.6em">Apple Store</span></strong></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-9901cd" data-block-id="a46b89e5e17a30e0bf617103929939f0" style="width: 238.614px; height: 238.614px; left: 98.5614px; top: 218.639px; min-width: 1px; min-height: 1px;"><div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="0"><img style="" data-natural-width="900" data-natural-height="900" data-lazy-loaded="" data-src="react-native-talk/24c36be4e99df4f094c9fb7f2332b821.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-4d63db" data-block-id="aea65bcca63d141fd258be227021b7c8" style="width: 606.865px; height: 341.361px; left: 416.567px; top: 218.639px; min-width: 1px; min-height: 1px;"><div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="1"><img style="" data-natural-width="1280" data-natural-height="720" data-lazy-loaded="" data-src="react-native-talk/f4c8f98c61db5d3b9b8d36287c9c1bdb.png"></div></div></section><section data-id="69acfb8a2f0b616a643872e46b9ffa13"><div class="sl-block" data-block-type="text" style="width: 911.409px; left: 15.6667px; top: 32.9074px; height: auto;" data-block-id="92745210552e7acf9fd9bbd7a1c92f88"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h1>Platform Specific Styles</h1>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-966aa7" data-block-id="d2a47bf0e85223109d47f5498237a939" style="width: 819.298px; height: 409.503px; left: 60.702px; top: 188.105px;"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11;"><pre class="javascript" style="font-size: 22px; line-height: 26px;"><code data-line-numbers="">import { Platform, StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    ...Platform.select({
+      ios: {
+        backgroundColor: 'red'
+      },
+      android: {
+        backgroundColor: 'green'
+      }
+    })
+  }
+});</code></pre></div></div></section><section data-id="c0b8c3d04cbafe196bfc52b5741b85f4"><div class="sl-block" data-block-type="text" style="width: 911.409px; left: 15.6667px; top: 32.9074px; height: auto;" data-block-id="ff7c31bf4f851e92e78a7be4f2f46d22"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h1>Platform Specific Files</h1>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-966aa7" style="width: 782.456px; height: 232.895px; left: 88.772px; top: 264.883px;" data-block-id="3bdc90e602442f715e8699524f5a0a0f"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11;"><pre class="javascript" style="font-size: 22px; line-height: 26px;"><code data-line-numbers="">// Files with extensions
+
+MyComponent.ios.js
+MyComponent.android.js
+
+// Import component
+import MyComponent from './MyComponent';
+</code></pre></div></div></section><section data-background-color="#222222" data-id="e5e866f6b48597bec4b1455322175416">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 806px; left: 87.6901px; top: 43.2339px;" data-block-id="34e09cfb567d2fadf630ebc8dd4063fa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255); text-align: center;">
+<h2>Challenges</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 806px; left: 62.9532px; top: 266.287px;" data-block-id="371eb7eb611b9ac7f7502a9710550e6a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255); text-align: center; line-height: 1.95;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0"><span style="font-size:1.2em">Inclined to test on personal devices</span></li>
+	<li class="fragment" data-fragment-index="1"><span style="font-size:1.2em">Developers run only one emulator at a time</span></li>
+</ul>
+</div></div>
+</section><section data-id="6fbc2df13c6037d9bb8e2c59643483de" data-background-color="#222222"><div class="sl-block" data-block-type="text" style="height: auto; width: 958px; left: 0px; top: 151.464px;" data-block-id="781c412c6e6eda7eb2bef097c8ea4ac3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; line-height: 1.95; color: rgb(170, 170, 170);" data-has-line-height="">
+<p style="text-align:left"> </p>
+
+<ul>
+	<li class="fragment" data-fragment-index="0"><span style="font-size:1.2em">Develop with both iOS and Android emulators</span></li>
+	<li class="fragment" data-fragment-index="1"><span style="color:rgb(170, 170, 170); font-size:1.2em">Automate both Android and iOS releases</span></li>
+	<li class="fragment" data-fragment-index="2"><span style="font-size:1.2em">Maximize devices</span></li>
+	<li class="fragment" data-fragment-index="3"><span style="font-size:1.2em">Test early and often</span></li>
+	<li class="fragment" data-fragment-index="4"><span style="font-size:1.2em">Bottom-line: Treat Android and iOS as equals</span></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 174px; top: 70px;" data-block-id="6d58b12fe702759109cfb878614d850a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: center; color: rgb(255, 255, 255);">
+<h2>Strategies</h2>
+</div></div>
+</section><section data-id="96be267b4efdb76406976ffb8b1708c9" data-background-color="#7faef7"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 104.45px; height: auto;" data-block-id="ae31670c03d0895578cf63e51395f47a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(0, 0, 0);">
+<h1>Organize Styles</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-4df311" data-block-id="a1afac7a0df62a12075c7deb28e0f062" style="width: 539.149px; height: 359.292px; left: 210.425px; top: 217.841px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img style="" data-natural-width="1280" data-natural-height="853" data-lazy-loaded="" data-src="react-native-talk/36c0bffd32c72140bebffcf73bf6e2cd.png"></div></div></section><section data-id="719cacf7a7a48ef8ea845ac257967205"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 42px; height: auto;" data-block-id="8c24db91b0ced36528915c59be21b78b"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Inline Styling</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-f0fe1e" data-block-id="d0bebd5d1cde2cc7e1dc35337aa93cef" style="width: 956.23px; height: 331px; left: 3.77px; top: 177.943px;"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11; font-size: 130%;"><pre class="javascript"><code data-line-numbers="">import * as React from 'react';
+import { Text, View } from 'react-native';
+
+export default function MyComponent() {
+  return (
+    &lt;View style={{ flex: 1, justifyContent: 'center', paddingTop: 10, 
+      backgroundColor:'#ecf0f1', padding: 8}}&gt;
+      &lt;Text style={{margin: 24, fontSize: 18, fontWeight: 'bold', 
+       textAlign: 'center'}}&gt;Some text is displayed&lt;/Text&gt;
+    &lt;/View&gt;
+  );
+}
+
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-b11c10" data-block-id="0cea7bcff221c6d31210ec10893306f4" style="height: auto; width: 600px; left: 181.885px; top: 560px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p>This looks messy!</p>
+</div></div></section><section data-id="41e685cc31331318af31aa78e78481b7"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 42px; height: auto;" data-block-id="e42160ae54b83346c06bce0c6d901d2a"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Organize Styles</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 634.1px; height: 494.246px; left: -154.1px; top: 166.762px;" data-block-id="9d71d4aede22a8de5390457b82a9534a" data-name="code-1aa664"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 12; font-size: 130%;"><pre class="javascript"><code data-line-numbers="">// AppStyle.js - Styles in a seperate file
+
+import { StyleSheet } from 'react-native';
+
+export default StyleSheet.create({
+  container: { 
+    flex: 1, 
+    justifyContent: 'center',
+    paddingTop: 100,              
+    backgroundColor:'#ffff', 
+    padding: 10,
+  },
+  paragraph: {
+    margin: 24, 
+    fontSize: 18, 
+    fontWeight: 'bold', 
+    textAlign: 'center'
+  }
+});
+
+</code></pre></div></div>
+<div class="sl-block" data-block-type="code" data-name="code-1c8585" data-block-id="63dccafb99f3bf767fa545104c9d36bf" style="width: 601.009px; height: 494.246px; left: 498.849px; top: 166.762px;"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 13; font-size: 130%;"><pre class="javascript"><code data-line-numbers="">// App.js - Component file
+
+import * as React from 'react';
+import { Text, View } from 'react-native';
+
+// Use the style within the component
+import styles from './AppStyle'
+
+export default function App() {
+  return (
+    &lt;View style={styles.container}&gt;
+      &lt;Text style={styles.paragraph}&gt;
+       Some text is displayed
+      &lt;/Text&gt;
+    &lt;/View&gt;
+  );
+}
+
+</code></pre></div></div></section><section data-id="c0867037b6292e75daf0d397248317d7"><div class="sl-block" data-block-type="text" style="width: 1029.09px; left: -34.545px; top: 324.221px; height: auto;" data-block-id="44e22b0675e7c3c82f31e84c37cb2ca9"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<p><strong><a href="https://snack.expo.io/@adhithi/flexdirectiondemo" target="_blank">https://snack.expo.io/@adhithi/flexdirectiondemo</a></strong></p>
+</div></div></section><section data-id="2db76b65e79e90cad6c7d56a0b70cfce" data-background-image="react-native-talk/6772ca10dcecaa1c6bff5de13864c927.jpg"><div class="sl-block" data-block-type="text" style="width: 806px; left: 105.9px; top: 33px; height: auto;" data-block-id="c4d79905c9a8cb2660f6678f1a026310"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Organizing Styles Perks</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 90.3598px; top: 168.268px; height: auto;" data-block-id="b806503554bc970d6557e0e8c2ded289"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; line-height: 1.69;" data-has-line-height="">
+<ul>
+	<li>Reuse Styles across components</li>
+	<li>Maintainable code</li>
+	<li>Easier to test</li>
+</ul>
+</div></div></section><section data-id="3b352512bf22686ef4dae5296a77b257" data-background-color="#7faef7"><div class="sl-block" data-block-type="text" style="width: 806px; left: 62.6925px; top: 28.6853px; height: auto;" data-block-id="72425dedf06c077bcb563778fb41f9c3"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(0, 0, 0);">
+<h1>The one with Hooks!</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-4cda81" data-block-id="ed7cd5302240e49616b6b3847e39835a" style="width: 806.4px; height: 466.2px; left: 103.384px; top: 163.8px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1280" data-natural-height="740" style="" data-lazy-loaded="" data-src="react-native-talk/5c180e37235435c9790563cd616212a0.png"></div></div></section><section data-id="c46f8d2bbde6e0443d11662513d3a56b"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 42px; height: auto;" data-block-id="841147744e21a3bf17057f10fb2ad8ae"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>useKeyboard</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-51dfaf" data-block-id="4088eb22c5d7a7793f342ab2dd20fc1f" style="width: 876.767px; height: 216.077px; left: 52.943px; top: 259.615px;"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11; font-size: 120%;"><pre class="javascript"><code data-line-numbers="">import { useKeyboard } from '@react-native-community/hooks'
+
+const keyboard = useKeyboard()
+
+console.log('keyboard isKeyboardShow: ', keyboard.keyboardShown)
+console.log('keyboard keyboardHeight: ', keyboard.keyboardHeight)
+console.log('keyboard coordinates: ', keyboard.coordinates)</code></pre></div></div></section><section data-id="59ec26e406561c9ce383d9311d06d6ee"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 42px; height: auto;" data-block-id="eceb7b98cf07990b27b28cab6b6f3efd"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>useDimensions</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-51dfaf" style="width: 885.113px; height: 123.078px; left: 50.5584px; top: 306.115px;" data-block-id="59a12bc0230733cf02e6e757e6b55de0"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11; font-size: 120%;"><pre class="javascript"><code data-line-numbers="">import { useDimensions } from '@react-native-community/hooks'
+const { width, height } = useDimensions().window
+// or
+const screen = useDimensions().screen</code></pre></div></div></section><section data-id="69142a98bcffc0766348795526f8b45d"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 42px; height: auto;" data-block-id="5c1bbe29a817be8390d39ed7ef5219dc"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>useAppState</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-51dfaf" style="width: 894.652px; height: 115.924px; left: 42.2124px; top: 292.038px;" data-block-id="3f21cb83309769dff6093f3232379d74"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11; font-size: 120%;"><pre class="javascript"><code data-line-numbers="">import { useAppState } from '@react-native-community/hooks'
+
+const currentAppState = useAppState()
+// returns inactive, active or background</code></pre></div></div></section><section data-id="219a39e9f7bbfdc8a8bd540910366b2a"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 42px; height: auto;" data-block-id="9a70b45107803dea142031e79d936a98"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>useColorScheme</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-51dfaf" style="width: 794.498px; height: 135.001px; left: 85.502px; top: 296.576px;" data-block-id="b5d612a933c90c14ed7243f7b8f88fe1"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11; font-size: 120%;"><pre class="javascript"><code data-line-numbers="">import {Text, useColorScheme} from 'react-native';
+
+const colorScheme = useColorScheme();
+// returns light or dark</code></pre></div></div></section><section data-id="27a595a2ae5d66ac7ac07f2953059742"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 42px; height: auto;" data-block-id="e0905042b6b2bae2282ebc3a192bcb24"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>useAccessibilityInfo</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-51dfaf" style="width: 957.843px; height: 142.154px; left: 8.82786px; top: 277.846px;" data-block-id="c7a2b730849b1cc15fe7ae71cc44d76c"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11; font-size: 120%;"><pre class="javascript"><code data-line-numbers="">import { useAccessibilityInfo } from '@react-native-community/hooks'
+
+const { reduceMotionEnabled, screenReaderEnabled } = useAccessibilityInfo()
+// returns the accessibility status of device</code></pre></div></div></section><section data-id="0ac294c58c3689718c7dd23e62dba9f9"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 42px; height: auto;" data-block-id="8a83a06f143ab4613829862df05ecfbb"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h2>useDeviceOrientation</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" data-name="code-51dfaf" style="width: 881.536px; height: 160.385px; left: 52.943px; top: 259.615px;" data-block-id="5411a87b2054b822ef9e85ac10fce4f0"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11; font-size: 120%;"><pre class="javascript"><code data-line-numbers="">import { useDeviceOrientation } from '@react-native-community/hooks'
+
+const orientation = useDeviceOrientation()
+console.log('is orientation portrait: ', orientation.portrait)
+console.log('is orientation landscape: ', orientation.landscape)</code></pre></div></div></section><section data-id="2ca3a4be99d3931231408539279ab491" data-background-color="#7faef7"><div class="sl-block" data-block-type="text" style="width: 806px; left: 74px; top: 70px; height: auto;" data-block-id="050bc1f3d6d4f43e8ff818fe0e5110e2"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Performance</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-8eeb76" data-block-id="930fda3aed412d80191130a899c326a3" style="width: 690.952px; height: 364.27px; left: 131.524px; top: 237.865px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="2500" data-natural-height="1318" style="" data-lazy-loaded="" data-src="react-native-talk/f93126bab5f8444ac2e62e9d7f9ee84b.jpg"></div></div></section><section data-id="abc9ef9b1592a493fe0afabda76bdeb4"><div class="sl-block" data-block-type="text" style="height: auto; width: 423.773px; left: 153.245px; top: 51.4247px;" data-block-id="2efafa0179e697a25c8f354ae45b6c51"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<h2>Use Hermes</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 128px; height: 129px; left: 11px; top: 15px; min-width: 1px; min-height: 1px;" data-block-id="2b0fd5ab9dfb681ab82bd5deb6004b1f"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="717" data-natural-height="720" style="" data-lazy-loaded="" data-src="react-native-talk/182fcaa650c4247615657b05a5d96ed3.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-62b31a" data-block-id="fb5755eefdf830ece3c8040ddc7437c0" style="height: auto; width: 813.671px; left: 73.1645px; top: 260px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; line-height: 1.69;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0">JS engine optimized for running RN apps on Android.</li>
+	<li class="fragment" data-fragment-index="1">Improved start time.</li>
+	<li class="fragment" data-fragment-index="2">Decreased memory usage.</li>
+	<li class="fragment" data-fragment-index="3">Smaller app size.</li>
+	<li class="fragment" data-fragment-index="4">Version &gt;= 0.60.4</li>
+</ul>
+</div></div></section><section data-id="d546a26bc7263e9d29f1d9a86442717e"><div class="sl-block" data-block-type="text" style="height: auto; width: 855px; left: 119px; top: 32px;" data-block-id="eeffa07e634f18778fb815f6f2cd7986"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<h2>Run Animations on native driver</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 128px; height: 129px; left: 11px; top: 15px; min-width: 1px; min-height: 1px;" data-block-id="5ff4a463bbaf862a6712e64ed65ce367"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="717" data-natural-height="720" style="" data-lazy-loaded="" data-src="react-native-talk/182fcaa650c4247615657b05a5d96ed3.png"></div></div>
+<div class="sl-block" data-block-type="code" style="width: 833px; height: 296px; left: 80px; top: 245px;" data-block-id="0b968953430742962a0eb7832e90f5bd"><div class="sl-block-content notranslate" data-highlight-theme="github-gist" data-code-frame="none" style="z-index: 12; font-size: 200%;" data-code-wrap="true"><pre class="xquery"><code>Animated.timing(this.state.animatedValue, {
+  toValue: 1,
+  duration: 500,
+  useNativeDriver: true, // &lt;-- Add this
+}).start();
+</code></pre></div></div></section><section data-id="f9cc85fa2e35adbb2e0e196e1a85ad83"><div class="sl-block" data-block-type="image" style="width: 128px; height: 129px; left: 0px; top: 31px; min-width: 1px; min-height: 1px;" data-block-id="ed596a57f03e5839cd047bb3d08e82ed"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="717" data-natural-height="720" style="" data-lazy-loaded="" data-src="react-native-talk/182fcaa650c4247615657b05a5d96ed3.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 851px; left: 92px; top: 78px;" data-block-id="50b45543fc9ddedd8789fbc4b2b53cb1"><div class="sl-block-style" style="z-index: 11; transform: rotate(360deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;" dir="ui"><h2>Use FlatList or SectionList </h2></div></div></div>
+
+<div class="sl-block" data-block-type="image" style="width: 121px; height: 130px; left: 20px; top: 280px; min-width: 1px; min-height: 1px;" data-block-id="dc8547c715b2a9d13fdd19ccaf68f0c2"><div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="0"><img data-natural-width="671" data-natural-height="720" style="" data-lazy-loaded="" data-src="react-native-talk/301f762a0c4aacc26ef629d252a0cf65.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 320px; left: 197.5px; top: 313px;" data-block-id="e37f2313bf3080f3b6fc1f3c8ffa93c0"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" dir="ui" data-fragment-index="0">
+<h2>ListView</h2>
+</div></div></section><section data-id="1bbc5821369cc55c925e67b362d9f131"><div class="sl-block" data-block-type="image" style="width: 128px; height: 129px; left: 13px; top: 18px; min-width: 1px; min-height: 1px;" data-block-id="c2654f4bc1cc527f79e7fefb2e139002"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="717" data-natural-height="720" style="" data-lazy-loaded="" data-src="react-native-talk/182fcaa650c4247615657b05a5d96ed3.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 851px; left: 103px; top: 31px;" data-block-id="919f9c2e2b9161bb017cd8c4f07656fd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Using key attribute on list items</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 916px; height: 280px; left: 38px; top: 210px;" data-block-id="46491069a86893258ff8207a469484f4"><div class="sl-block-content notranslate fragment" data-highlight-theme="github-gist" style="z-index: 12; border-style: solid; border-width: 1px; font-size: 180%;" data-fragment-index="0"><pre class="xquery"><code>class MyComponent extends React.Component {
+  render() {
+    return this.props.data.map((item, i) =&gt; {
+      return &lt;Text key={item.id}&gt;{item.title}&lt;/Text&gt;
+    });
+  }
+}</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 910px; left: 25px; top: 505px;" data-block-id="b2d092bc748c7f50c955ad04cf0353cb"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="1">
+<p>Without a unique key for every list item, React will re-render every time you add/remove an item.</p>
+
+<p> </p>
+</div></div></section><section data-id="c5749981efbf83b156921eb95501047c"><div class="sl-block" data-block-type="image" style="width: 128px; height: 129px; left: 13px; top: 18px; min-width: 1px; min-height: 1px;" data-block-id="6e75a9335457327ff1ed5e137302d54b"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="717" data-natural-height="720" style="" data-lazy-loaded="" data-src="react-native-talk/182fcaa650c4247615657b05a5d96ed3.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 851px; left: 103px; top: 31px;" data-block-id="c532eda9f57be94d066431fa745ecbe9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Use Pressable Component</h2>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 863.539px; height: 140px; left: 38px; top: 210px;" data-block-id="fd5b5ed81ee6408b81604201829c65f2"><div class="sl-block-content notranslate fragment" data-highlight-theme="github-gist" style="z-index: 12; border-style: solid; border-width: 1px; font-size: 180%;" data-fragment-index="0"><pre class="xquery"><code>&lt;Pressable onPress={onPressFunction}&gt;
+  &lt;Text&gt;I'm pressable!&lt;/Text&gt;
+&lt;/Pressable&gt;</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 910px; left: 25px; top: 412px;" data-block-id="752bcf5cde1fdd4654e9c64ee48ddf3e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; line-height: 1.69;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="1">Better performance than Touchable components.</li>
+	<li class="fragment" data-fragment-index="2">Supports <em>onLongPress()</em>
+</li>
+	<li class="fragment" data-fragment-index="3">Captures touches outside pressable areas.</li>
+	<li class="fragment" data-fragment-index="4">Supports Android ripple effect.</li>
+</ul>
+</div></div></section><section data-id="afa0ef0cef227e7610c2efed6253f4d3"><div class="sl-block" data-block-type="text" style="height: auto; width: 1091px; left: -77px; top: 294px;" data-block-id="3aa43f232ea376477126e53bd005c2e4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;">
+<h3><span style="font-size:1.2em"><em><a href="https://facebook.github.io/react-native/docs/performance" target="_blank">https://facebook.github.io/react-native/docs/performance</a></em></span></h3>
+</div></div></section><section data-background-color="#7faef7" data-id="a7be0a32aff0311096b71d7453eb7ab9"><div class="sl-block" data-block-type="image" style="width: 492px; height: 264px; left: 212.577px; top: 257.808px; min-width: 1px; min-height: 1px;" data-block-id="b68a5561cd06914364516507226862ca"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="380" data-natural-height="204" style="" data-lazy-loaded="" data-src="react-native-talk/68391b6cbca7f3b9d80778e625d8cdf7.gif"></div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 62.6925px; top: 28.6853px; height: auto;" data-block-id="7c381627b1af1dff96693eff841b9b28" data-name="text-6b8960"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11; color: rgb(0, 0, 0);">
+<h1>Navigation</h1>
+</div></div></section><section data-background-color="#000000" data-id="a680451554baa22080d952edc4570e22"><div class="sl-block" data-block-type="image" style="width: 832px; height: 798px; left: 56px; top: -18px; min-width: 1px; min-height: 1px;" data-block-id="df59f274a72bb1b2565b309230791f07"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="1407" data-natural-height="1350" data-lazy-loaded="" data-src="react-native-talk/5631e080511720cb28c39b59390785a1.png"></div></div></section><section data-id="5aa4135a233b5dca0856ac319d353cbe"><div class="sl-block" data-block-type="image" style="width: 871px; height: 490px; left: 52px; top: 105px; min-width: 1px; min-height: 1px;" data-block-id="9c453a5b8e03ee98d5eef45beb938486"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="480" data-natural-height="270" data-lazy-loaded="" data-src="react-native-talk/2f94e62ad8201d542c808cc68c052b2f.gif"></div></div></section><section data-background-color="#000000" data-id="766557f0a72ad05044a4d5ee0aba0ee8">
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 767px; left: 113px; top: 18px;" data-block-id="8ea5120aa8b497c88a80afe4784975fa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255);">
+<h2>What have I used?</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 120px; top: 233px;" data-block-id="d881ac9756974a0cad4d635fb5c28dab"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; text-align: left; color: rgb(255, 255, 255); line-height: 1.95;" data-has-line-height="" dir="ui">
+<ul>
+	<li class="fragment" data-fragment-index="0">NavigationExperimental</li>
+	<li class="fragment" data-fragment-index="2">Navigator</li>
+	<li class="fragment" data-fragment-index="4">NavigationIOS</li>
+	<li class="fragment" data-fragment-index="6">Native Navigation</li>
+	<li class="fragment" data-fragment-index="8">React Navigation</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 176px; top: 266px;" data-block-id="31158f0620ab04eeeffc6c676a5e12d1"><div class="sl-block-content fragment" data-line-x1="117" data-line-y1="11" data-line-x2="-204" data-line-y2="11" data-line-color="#ffffff" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-fragment-index="1" data-line-width="5px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="321" height="1" viewbox="-204 11 321 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="117.5" y1="11.5" x2="-203.5" y2="11.5"></line><line class="line-element" stroke="#ffffff" stroke-width="5" x1="117.5" y1="11.5" x2="-203.5" y2="11.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 166px; top: 322px;" data-block-id="1e241e18c46158708bc1d0d0a81e619c"><div class="sl-block-content fragment" data-line-x1="-83" data-line-y1="11" data-line-x2="-214" data-line-y2="11" data-line-color="#ffffff" data-line-start-type="none" data-line-end-type="none" style="z-index: 13;" data-fragment-index="3" data-line-width="5px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="131" height="1" viewbox="-214 11 131 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-82.5" y1="11.5" x2="-213.5" y2="11.5"></line><line class="line-element" stroke="#ffffff" stroke-width="5" x1="-82.5" y1="11.5" x2="-213.5" y2="11.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 166px; top: 379px;" data-block-id="a8051603fac8e398aa286a634294fe0b"><div class="sl-block-content fragment" data-line-x1="-19" data-line-y1="11" data-line-x2="-218" data-line-y2="11" data-line-color="#ffffff" data-line-start-type="none" data-line-end-type="none" style="z-index: 14;" data-fragment-index="5" data-line-width="5px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="199" height="1" viewbox="-218 11 199 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="-18.5" y1="11.5" x2="-217.5" y2="11.5"></line><line class="line-element" stroke="#ffffff" stroke-width="5" x1="-18.5" y1="11.5" x2="-217.5" y2="11.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 166px; top: 441px;" data-block-id="fe28fb39abc0df072a7ca58b1ee44fd4"><div class="sl-block-content fragment" data-line-x1="27" data-line-y1="11" data-line-x2="-218" data-line-y2="11" data-line-color="#ffffff" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;" data-fragment-index="7" data-line-width="5px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="245" height="1" viewbox="-218 11 245 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="27.5" y1="11.5" x2="-217.5" y2="11.5"></line><line class="line-element" stroke="#ffffff" stroke-width="5" x1="27.5" y1="11.5" x2="-217.5" y2="11.5"></line></svg></div></div></section><section data-background-color="#000000" data-id="6e0a9d4a9e635a44a4abbdb658526baf"><div class="sl-block" data-block-type="text" style="height: auto; width: 632px; left: 160px; top: 62px;" data-block-id="f058a0850bc852b1a70fd4c5cb9c7a4f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<h2>Version 5 stable and best bet!</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 176px; top: 350px;" data-block-id="d1dd10b60dd073f5c8e517a66fec3d24"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(92, 224, 232); text-align: center;">
+<h2><a href="https://reactnavigation.org/" target="_blank">React Navigation</a></h2>
+</div></div></section><section data-background-color="#000000" data-id="da0ae2f9492ab1713b1c14e0205ac507"><div class="sl-block" data-block-type="text" style="height: auto; width: 704px; left: 129px; top: 110px;" data-block-id="08e4da02df2c880bccc0b0bdea9b77b6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255);" dir="ui">
+<h3>Provides 100% Native platform navigation on both iOS and Android</h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 775px; left: 93px; top: 346px;" data-block-id="3086f67f124a0faae81f7e91f305fb83"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(92, 224, 232); text-align: center;">
+<h2><a href="https://github.com/wix/react-native-navigation" target="_blank">React Native Navigation</a></h2>
+</div></div></section><section data-id="0fc15a2a4d801e1b8d922d9b866fa21f" data-background-color="#7faef7"><div class="sl-block" data-block-type="text" style="width: 994.384px; left: 0px; top: 53.9457px; height: auto;" data-block-id="3a622d0020eb373cd5a1e4dab9817b9e"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(0, 0, 0);">
+<h1>Don't reinvent the wheel</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-ce81bb" data-block-id="8361bb8fc4b544f4b0b8b6a7d292a69b" style="width: 693.679px; height: 389.833px; left: 117.931px; top: 210px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1920" data-natural-height="1079" style="" data-lazy-loaded="" data-src="react-native-talk/1e1a61112ece6b8d0248ae98b22b1927.jpg"></div></div></section><section data-id="398b2f2b19bee27fd9e206c878976acc"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 266px; height: auto;" data-block-id="83901c8bc626fad1c789f93fb0c7b7eb"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2><em><a href="https://github.com/react-native-community" target="_blank">https://github.com/react-native-community</a></em></h2>
+</div></div></section><section data-background-color="#222222" data-id="79b528fa7e7ffb10cfe40b94cdb8304a"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 225px; height: auto;" data-block-id="f8653a7deb175695ace74cd8e0f1b9e6"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2><span style="color:#FFFFFF">Make sure to open source your work to help the community!</span></h2>
+</div></div></section><section data-id="e90a50a883d4ef52022aca39bb70ebdf" data-background-color="#7faef7"><div class="sl-block" data-block-type="text" style="width: 1028.01px; left: -34.005px; top: 63.3957px; height: auto;" data-block-id="f149245657cc41af9dfa4350c856cdb5"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(0, 0, 0);">
+<h1>Accessible Apps</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-8ea3f1" data-block-id="fa78403a829cccb573503b4650009e04" style="width: 335.675px; height: 431.823px; left: 320px; top: 182.855px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="995" data-natural-height="1280" data-lazy-loaded="" data-src="react-native-talk/b1aebf05a7e07822646c2aab44d54b37.png"></div></div></section><section data-id="7b912190f4240131e2e283780801848c"><div class="sl-block" data-block-type="text" style="width: 621.268px; left: 199.422px; top: 18.6924px; height: auto;" data-block-id="6f0736091500d5b4fbdc2aeccb6f738d"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h2>iOS Screen Reader</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-50c07c" data-block-id="df0ce10cd3b3c76283d28ae50e550411" style="width: 263.257px; height: 570.461px; left: 536.743px; top: 114.039px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="623" data-natural-height="1350" style="" data-lazy-loaded="" data-src="react-native-talk/64f39bf26d45151917805cc76a1ce43c.jpg"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-4c5c28" data-block-id="ffbb1def447ffaae5407c680c8e599b4" style="width: 263.257px; height: 570.461px; left: 160px; top: 114.039px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="623" data-natural-height="1350" style="" data-lazy-loaded="" data-src="react-native-talk/4d5eafee51ceb11d98188597f3fa6318.jpg"></div></div></section><section data-id="d7fb94af6f239120da2b42043700994d"><div class="sl-block" data-block-type="text" style="width: 806px; left: 61.5001px; top: 34.6936px; height: auto;" data-block-id="c55e3df9510b01497474a476bb706882"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h2>Android Screen Reader</h2>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-4ebe18" data-block-id="f4995790a80db7a7b93ffe323146b7e4" style="width: 327.877px; height: 518px; left: 117.546px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="576" data-natural-height="910" style="" data-lazy-loaded="" data-src="react-native-talk/f4c7c9dbf1aea681761358cb45552566.png"></div></div>
+<div class="sl-block" data-block-type="image" data-name="image-bbc90a" data-block-id="bd48bb6cb43e5e90eb719d24c893fc74" style="width: 327.991px; height: 518px; left: 519.817px; top: 140px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="580" data-natural-height="916" style="" data-lazy-loaded="" data-src="react-native-talk/38f7a22b65d2237acad4c8c3fcc329c2.png"></div></div></section><section data-id="2747897d0bfeaf70a88d8d494d98c0b2"><div class="sl-block" data-block-type="text" style="width: 714.901px; left: 141.994px; top: 13.5555px; height: auto;" data-block-id="083d8069ff48d4b433124bac7ec9e587"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h2>Detect State of Device</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="code" data-name="code-03136f" data-block-id="b2462accb1fedabc45cac92401dacf29" style="width: 1036.31px; height: 508.048px; left: -38.155px; top: 121.952px;"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 12; font-size: 120%;"><pre class="javascript"><code data-line-numbers="">
+import React, { useState, useEffect } from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { useAccessibilityInfo } from '@react-native-community/hooks'
+
+export default function App() {
+
+  const { reduceMotionEnabled, screenReaderEnabled } = useAccessibilityInfo();
+
+  return (
+    &lt;View style={styles.container}&gt;
+      &lt;Text style={styles.status}&gt;
+        The device reduce motion is {reduceMotionEnabled ? "enabled" : "disabled"}
+      &lt;/Text&gt;
+      &lt;Text style={styles.status}&gt;
+        The device screen reader is {screenReaderEnabled ? "enabled" : "disabled"}
+      &lt;/Text&gt;
+    &lt;/View&gt;
+  );
+}
+</code></pre></div></div></section><section data-id="dded77b46584b5e26ee0e37e532aae4c"><div class="sl-block" data-block-type="text" style="width: 714.901px; left: 130.071px; top: 14.7478px; height: auto;" data-block-id="b4cabdd2b7afedd8d1b4601e581b97e4"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Title Text" style="text-align: left; z-index: 10;">
+<h2>  Accessible Component</h2>
+</div></div>
+
+<div class="sl-block" data-block-type="code" data-name="code-03136f" style="width: 807.269px; height: 465.808px; left: 80.0005px; top: 140px;" data-block-id="7046e4fc0b3a272670f14b68bd4dff58"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 11; font-size: 120%;"><pre class="javascript"><code data-line-numbers="">export default function App() {
+
+  return (
+    &lt;View style={styles.container}&gt;
+      &lt;TouchableOpacity
+        accessible={true}
+        accessibilityLabel="Go back"
+        accessibilityHint="Navigates to the previous screen"
+        onPress={() =&gt; {}}&gt;
+        &lt;View 
+          style={styles.button}
+          accessibilityRole={'button'}&gt;
+          &lt;Text style={styles.buttonText}&gt;Back&lt;/Text&gt;
+        &lt;/View&gt;
+      &lt;/TouchableOpacity&gt;
+    &lt;/View&gt;
+  );
+}</code></pre></div></div></section><section data-id="d6eb996b8ca159e028f75be5cea37647" data-background-color="#7faef7"><div class="sl-block" data-block-type="text" style="width: 806px; left: 74px; top: 43px; height: auto;" data-block-id="9d632bd7891926ad69c1e59062c4e32b"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(0, 0, 0);">
+<h1>The Power of Testing</h1>
+</div></div>
+<div class="sl-block" data-block-type="image" data-name="image-439f52" data-block-id="a1ec65783727852482cb75a5fbf3d3ad" style="width: 495.027px; height: 412.651px; left: 224.973px; top: 213.674px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1280" data-natural-height="1067" style="" data-lazy-loaded="" data-src="react-native-talk/cdcd446232b5cc2e48369592bc2a40e7.png"></div></div></section><section data-background-color="#222222" data-id="076a3b0cba2faf48a4b20aab9e3dafb0"><div class="sl-block" data-block-type="text" style="width: 841px; left: 60px; top: 156px; height: auto;" data-block-id="34eb438fe03ea5cc79da771cf9ea3850"><div class="sl-block-content" data-placeholder-tag="h2" data-placeholder-text="Subtitle" style="z-index: 10;">
+<h1><span style="color:#FFFFFF"><em><span style="text-align:start">“Quality means doing it right even when no one is looking.”</span></em>— Henry Ford</span></h1>
+</div></div></section><section data-background-color="#222222" data-id="96578d490d6f32e9bdcfc5c6df2ef8e3"><div class="sl-block" data-block-type="text" style="width: 980px; left: -10px; top: 22px; height: auto;" data-block-id="bbe806a5d260f86a732c386cb80b6c18"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><span style="color:#FFFFFF">Using Detox</span></h1>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 960px; left: 0px; top: 210px;" data-block-id="e17784eea1d0b9b385021e5acc22b263"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2><span style="color:#FFFFFF"><span style="text-align:start"> Detox tests your mobile app while it's running in a real device/simulator, interacting with it just like a real user</span></span></h2>
+</div></div></section><section data-id="59b52abe3b6a7673a5f5fe330b249efa"><div class="sl-block" data-block-type="text" style="width: 1097px; left: -62px; top: 32px; height: auto;" data-block-id="0aa4fb610f8ef72baf112d96cd3a53a2"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1>Detox Testing</h1>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 777px; left: 103px; top: 220px;" data-block-id="b7ebff511ed39059087f7dcb20911944"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; line-height: 1.95;" data-has-line-height="">
+<ul>
+	<li class="fragment" data-fragment-index="0"><span style="font-size:1.2em">Emulates a user testing experience</span></li>
+	<li class="fragment" data-fragment-index="1"><span style="font-size:1.2em">Detox is a gray box test (monitor the app from inside)</span></li>
+	<li class="fragment" data-fragment-index="2"><span style="font-size:1.2em">Helps automate a manual QA process</span></li>
+	<li class="fragment" data-fragment-index="3"><span style="font-size:1.2em">Simple to write and execute (JavaScript)</span></li>
+</ul>
+</div></div></section><section data-id="301dc8a8d2322a14abd70ead8531b00a"><div class="sl-block" data-block-type="code" data-name="code-32a663" data-block-id="ac036be10114d7a24802b6f00778a591" style="width: 960px; height: 550.224px; left: 0px; top: 121.845px;"><div class="sl-block-content notranslate" data-highlight-theme="obsidian" data-code-frame="none" style="z-index: 10;"><pre class="javascript" style="font-size: 20px; line-height: 24px;"><code data-line-numbers="">const {device, expect, element, by, waitFor} = require('detox');
+
+describe('Example (explicit)', () =&gt; {
+  beforeEach(async () =&gt; {
+    await device.reloadReactNative();
+  });
+  
+  it('should have welcome screen', async () =&gt; {
+    await expect(element(by.id('welcome'))).toBeVisible();
+  });
+  
+  it('should show hello screen after tap', async () =&gt; {
+    await element(by.id('hello_button')).tap();
+    await expect(element(by.text('Hello!!!'))).toBeVisible();
+  });
+  
+  it('waitFor should be exported', async () =&gt; {
+    await waitFor(element(by.id('welcome'))).toExist().withTimeout(2000);
+    await expect(element(by.id('welcome'))).toExist();
+  });
+});</code></pre></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-250e74" data-block-id="1a0ddacc6b19d0c70270cf3e9550b6ec" style="height: auto; width: 600px; left: 180px; top: 22.9466px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<h2>Sample Detox Test</h2>
+</div></div></section><section data-background-color="#222222" data-id="676523e35f3ec06d8f6f198e22455e15"><div class="sl-block" data-block-type="text" style="width: 849px; left: 56px; top: 210px; height: auto;" data-block-id="66616085775c8430199bab44c643f474"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<h1><em><span style="color:#FFFFFF">Testing makes you ship code with confidence!</span></em></h1>
+</div></div></section><section data-id="923e1176a20f42d8043c4072354d8938" data-background-color="#7faef7"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 79.8452px; height: auto;" data-block-id="c96e43a7a41f96bc3d6ecccc24d3b4d0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; text-align: center; color: rgb(0, 0, 0);">
+<h1 style="text-align:left">Continuous Delivery </h1>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 380px; height: 380px; left: 290px; top: 241.115px; min-width: 1px; min-height: 1px;" data-block-id="2104128c53e7dc086c459dcf99bd7f57"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="720" data-natural-height="720" style="" data-lazy-loaded="" data-src="react-native-talk/24dbbb47742beb0aa9a72ed5d638407c.png"></div></div></section><section data-background-color="#ffffff" data-id="75f55d6273ec0f16c3ae576eb5443e8c">
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 556px; height: 194px; left: 208px; top: 5px; min-width: 1px; min-height: 1px;" data-block-id="a9824b82da7397f1acd18bdd15eaf228"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="871" data-natural-height="304" data-lazy-loaded="" data-src="react-native-talk/7fe7fafa8c4ef262f20415ac87d943ff.png"></div></div>
+<div class="sl-block" data-block-type="text" data-name="text-198d45" data-block-id="57e7a3f2c7663b7ca25a8f968989ab27" style="height: auto; width: 600px; left: 180px; top: 330.5px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<ul>
+	<li class="fragment" data-fragment-index="0">Generate screenshots</li>
+	<li class="fragment" data-fragment-index="1">Code signing</li>
+	<li class="fragment" data-fragment-index="2">Release your application</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" data-name="text-019262" data-block-id="d632a2bd1fd7709f568f9a0761a3cae0" style="height: auto; width: 842.037px; left: 64.9815px; top: 199px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<h3>Automate beta deployments &amp; release</h3>
+</div></div></section><section data-id="fce7b9ac8a099e3a1cceebd5acad912e" data-background-color="#222222">
+<div class="sl-block" data-block-type="image" style="width: 278px; height: 326px; left: 602px; top: 269px; min-width: 1px; min-height: 1px;" data-block-id="07cdec9c5987f45a63459f31087a4495"><div class="sl-block-content fragment" style="z-index: 10;" data-fragment-index="1"><img data-natural-width="1150" data-natural-height="1350" style="" data-lazy-loaded="" data-src="react-native-talk/5d57572671402e5e9ca9826f2f30172b.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 946px; left: 7px; top: 27px;" data-block-id="a8b6a8e7b85ed43698461882d2c2276a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: center; color: rgb(255, 255, 255);">
+<h2>Beta Deployments</h2>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: -40px; top: 210px;" data-block-id="d879372e4726b1e5d4d51a3fca5b3069"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12; color: rgb(255, 255, 255);" data-fragment-index="0">
+<h3>Testflight </h3>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 463px; top: 210px;" data-block-id="583ad4ee5fd8cebe30d3668cb1614cf7"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; text-align: center; color: rgb(255, 255, 255);" data-fragment-index="1">
+<h3>Google Play </h3>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 383px; height: 201px; left: 80px; top: 331.5px; min-width: 1px; min-height: 1px;" data-block-id="86377fc4700dad7f519ebe502f02fcb6"><div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="0"><img style="" data-natural-width="1200" data-natural-height="630" data-lazy-loaded="" data-src="react-native-talk/7b104f76fbd310a19ba538bde85aca40.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: -28.5px; top: 540.5px;" data-block-id="5d48d7b850bd6da3e4e87a8d4df3de35"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="0">
+<p><span style="font-size:0.5em"><em><a href="https://developer.apple.com/testflight/" target="_blank">https://developer.apple.com/testflight/</a></em></span></p>
+</div></div></section><section data-id="4b4ce3aa657ae7ae11aa8b8481cc8d9e"><div class="sl-block" data-block-type="image" data-name="image-bad58c" data-block-id="f2149231ac1a4dc2d59b8e27ddf0d481" style="width: 1361.87px; height: 700px; left: -200.93px; top: 0.0005px; min-width: 1px; min-height: 1px;"><div class="sl-block-content" style="z-index: 10;"><img style="" data-natural-width="2500" data-natural-height="1285" data-lazy-loaded="" data-src="react-native-talk/2949e5002edc4b2ef6a432fd0404645c.png"></div></div></section><section data-background-color="#000000" data-id="c9ca6ead6c1981093bb4c42e2f685d07"><div class="sl-block" data-block-type="text" style="width: 950px; left: 9px; top: 204px; height: auto;" data-block-id="c3c6a196c455774b81b9e679dbebc6e4"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<h1>It is a great time to be working on React Native!</h1>
+</div></div></section><section data-background-color="#ffffff" data-id="9db94299153171273a55a80c611abe3d"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 225px; height: auto;" data-block-id="41aa032dabd02b32d26bcd0120c8a783"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;" dir="ui">
+<h1>Questions</h1>
+
+<h1>@<a href="https://twitter.com/adhithiravi" target="_blank">AdhithiRavi</a>
+</h1>
+</div></div></section></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":1948229,"slug":"react-native-talk","title":"Best Practices to Build Scalable React Native Apps - ATO 2020","description":"Adhithi Ravichandran ATO talk","width":960,"height":700,"margin":0.05,"visibility":"self","published_at":null,"sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/92218c7aac2ca9c9a395207870c8a40d/thumb.jpg?1602774292","view_count":0,"user":{"id":887386,"username":"avindrafernando","name":"Avindra Fernando","description":null,"thumbnail_url":"https://lh6.googleusercontent.com/-M3NEgrSsLQE/AAAAAAAAAAI/AAAAAAAAAng/gI6HoGNo1s0/photo.jpg","account_type":"lite","team_id":null,"settings":{"id":1364586,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":true,"forking_enabled":false,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":false,"slide_count":58,"rtl":false,"version":2,"collaborative":false,"deck_user_editor_limit":1,"data_updated_at":1603203306206,"font_typekit":null,"font_google":null,"time_limit":null,"navigation_mode":"default","upsizing_enabled":true,"notes":{"59b52abe3b6a7673a5f5fe330b249efa":"Detox does Gray box, not Black box, to allows the test framework to monitor the app from the inside and actually synchronize with it.\n\n","6fbc2df13c6037d9bb8e2c59643483de":"Newer Android phones require more explicit permission requests, and once I tested on a physical device, I realized that my app’s photo gallery needed these permissions to load correctly.","abc9ef9b1592a493fe0afabda76bdeb4":"flexbox and position properties won't. "}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/reveal.js"></script>
+		<script src="lib/reveal-plugins.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 960,
+				height: 700,
+				margin: 0.05,
+				
+
+				hash: true,
+				controls: true,
+				progress: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: false,
+				fragmentInURL: true,
+
+				autoSlide: 0,
+				autoSlideStoppable: true,
+
+				autoAnimateMatcher: SL.deck.AutoAnimate.matcher,
+
+				center: false,
+				shuffle: false,
+				loop: false,
+				rtl: false,
+				navigationMode: "default",
+
+				transition: "slide",
+				backgroundTransition: "slide",
+
+				highlight: {
+					escapeHTML: false
+				},
+
+				plugins: [ RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight ]
+			});
+		</script>
+
+		
+
+	</body>
+</html>
